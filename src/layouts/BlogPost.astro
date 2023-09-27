@@ -13,44 +13,36 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
+		<style lang="postcss">
 			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
+				@apply grid place-items-center px-3 lg:px-0;
+			}
+			article {
+				@apply prose prose-hr:my-4 max-w-prose;
+				@apply prose-h2:mb-1;
 			}
 			.hero-image {
 				width: 100%;
+				@apply my-3;
 			}
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
 				border-radius: 12px;
-				box-shadow: var(--box-shadow);
 			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
+			
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+				
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
 			}
 			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				@apply text-gray-500;
 			}
 			.last-updated-on {
 				font-style: italic;
 			}
+			
 		</style>
 	</head>
 
