@@ -46,26 +46,28 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 				@apply px-3 lg:px-0
 			}
 			section a {
-				@apply flex justify-between hover:underline;
+				@apply flex justify-between hover:underline text-[blue];
 			}
 			h1 {
 				@apply text-[8vh] leading-none pointer-events-none;
 			}
 			ul {
-				@apply mt-5;
+				@apply mt-2;
 			}
 			li {
-				@apply border-b-2 border-current pt-8 pb-4;
+				@apply  border-current pt-8 pb-4;
 			}
-			
+			img {
+				@apply inline-block h-[1em] ml-2;
+			}
 		</style>
 	</head>
 	<body>
 		<main>
 			<section>
 				<h1>Simon's Learning </h1>
-				<h1><span class="">Journal :)</span></h1>
-				<div class="flex gap-2">
+				<h1>Journal<img src="/smile.svg" role="presentation" /></h1>
+				<div class="flex gap-2 mt-2 text-[blue]">
 					<HeaderLink href="/">All</HeaderLink>
 					{Object.keys(tagsWithPosts).map((tag)=> (
 						<HeaderLink href={`/?tag=${tag}`}>{tag}: {tagsWithPosts[tag]}</HeaderLink>

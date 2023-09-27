@@ -1,13 +1,13 @@
 ---
-import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
 <header>
 	<nav >
 		<div class="links">
-			<a href="/"> Back Home</a>
+			<a href="/"> Back to Home</a>
 		</div>
+		<img src="/smile.svg" role="presentation" />
 		<h2>{SITE_TITLE}</h2>
 		
 	</nav>
@@ -15,15 +15,22 @@ import { SITE_TITLE } from '../consts';
 
 <style lang="postcss">
 	nav {
-		@apply px-3 lg:px-4 py-4 flex justify-between items-center ; 
+		@apply px-3 lg:px-4 py-4 flex justify-between items-center text-sm md:text-base; 
+		@apply bg-white md:bg-transparent;
 	}
 	.links {
-		@apply flex gap-2;
+		@apply flex gap-2 flex-1;
 	}
 	header {
 		@apply sticky top-0;
 	}
 	a {
-		@apply hover:underline;
+		@apply hover:underline text-[blue];
+	}
+	img {
+		@apply h-[1.5em] hidden sm:block;
+	}
+	h2 {
+		@apply flex-1 text-right ;
 	}
 </style>

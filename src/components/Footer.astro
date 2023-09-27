@@ -5,15 +5,20 @@ const today = new Date();
 <footer>
 	Simon Zhang {today.getFullYear()}
 	<div class="links">
-		loooook ->
+		<p>loooook -></p>
+		<a href="https://github.com/codelastnight/learningjournal" target="_blank">source code</a>
 		<a href="https://simonzhang.design" target="_blank">portfolio</a>
+
 	</div>
 </footer>
 <style lang="postcss">
 footer {
-	@apply flex justify-between px-3 lg:px-4 py-4;
+	@apply flex justify-between px-3 lg:px-4 py-4 text-sm;
 }
 a {
-	@apply text-blue-700 hover:underline;
+	@apply text-[blue] hover:underline;
+}
+.links {
+	@apply flex gap-2;
 }
 </style>
