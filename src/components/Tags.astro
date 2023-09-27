@@ -1,0 +1,20 @@
+---
+interface Props {
+	tags: string[] | undefined;
+}
+
+const { tags } = Astro.props;
+---
+
+<p class="tags flex gap-1" data-tags={tags}>
+    {tags ? tags.map((tag)=> (
+        <a class="tag-item text-xs text-gray-700" href={`/?tag=${tag}`}>#{tag}<span>{','}</span></a>
+    )) : (
+        <div class="mb-4"></div>
+    )}
+</p>
+<style lang="postcss">
+    .tag-item:last-child span {
+		display:none;
+	}
+</style>

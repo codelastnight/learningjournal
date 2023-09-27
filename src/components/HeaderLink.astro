@@ -5,18 +5,29 @@ type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 
-const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a data-tag-button href={href} data-href={href} class:list={[className ]} {...props}>
 	<slot />
 </a>
 <style>
 	a {
-		@apply inline-block underline px-3 py-1 rounded-full border border-transparent;
+		@apply inline-block underline px-3 text-sm rounded-full border-[1.5px] border-transparent;
 	}
 	a.active {
 		@apply border-black ;
 	}
 </style>
+<script>
+	 // Find all buttons with the `alert` class on the page.
+	 const buttons = document.querySelectorAll('[data-tag-button]');
+	 const queryString = '/' + window.location.search;
+	// Handle clicks on each button.
+	buttons.forEach((button) => {
+		console.log(queryString)
+		const href = button.getAttribute('data-href')
+		if (queryString === href)
+		button.classList.add('active')
+		
+	});
+</script>
