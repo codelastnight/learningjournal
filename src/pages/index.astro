@@ -66,18 +66,18 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 		<main>
 			<section>
 				<h1>Simon's Learning </h1>
-				<h1>Journal<img src="/smile.svg" role="presentation" /></h1>
+				<h1>Journal<img src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" /></h1>
 				<div class="flex gap-2 mt-2 text-[blue]">
-					<HeaderLink href="/">All</HeaderLink>
+					<HeaderLink href={import.meta.env.BASE_URL}>All</HeaderLink>
 					{Object.keys(tagsWithPosts).map((tag)=> (
-						<HeaderLink href={`/?tag=${tag}`}>{tag}: {tagsWithPosts[tag]}</HeaderLink>
+						<HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>{tag}: {tagsWithPosts[tag]}</HeaderLink>
 					))}
 				</div>
 				<ul id="blogList">
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/${post.slug}/`}>
+								<a href={`${import.meta.env.BASE_URL}/${post.slug}/`}>
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />

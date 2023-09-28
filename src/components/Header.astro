@@ -5,9 +5,9 @@ import { SITE_TITLE } from '../consts';
 <header>
 	<nav >
 		<div class="links">
-			<a href="/"> Back to Home</a>
+			<a href={import.meta.env.BASE_URL}> Back to Home</a>
 		</div>
-		<img src="/smile.svg" role="presentation" />
+		<img src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" />
 		<h2>{SITE_TITLE}</h2>
 		
 	</nav>

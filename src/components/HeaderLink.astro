@@ -21,11 +21,11 @@ const { href, class: className, ...props } = Astro.props;
 <script>
 	 // Find all buttons with the `alert` class on the page.
 	 const buttons = document.querySelectorAll('[data-tag-button]');
-	 const queryString = '/' + window.location.search;
+	 const queryString = import.meta.env.BASE_URL + '/' + window.location.search;
 	// Handle clicks on each button.
 	buttons.forEach((button) => {
-		console.log(queryString)
-		const href = button.getAttribute('data-href')
+		const href = button.getAttribute('data-href') + '/'
+
 		if (queryString === href)
 		button.classList.add('active')
 		
