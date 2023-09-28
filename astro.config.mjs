@@ -7,6 +7,6 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://codelastnight.github.io',
-  base: '/livejournal',
+  base: '/learningjournal',
   integrations: [mdx(), sitemap(), tailwind()]
 });
