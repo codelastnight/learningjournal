@@ -24,8 +24,8 @@ const { href, class: className, ...props } = Astro.props;
 	 const queryString = import.meta.env.BASE_URL + '/' + window.location.search;
 	// Handle clicks on each button.
 	buttons.forEach((button) => {
-		const href = button.getAttribute('data-href') + '/'
-
+		const href = button.getAttribute('data-href') 
+		console.log(href, queryString)
 		if (queryString === href)
 		button.classList.add('active')
 		

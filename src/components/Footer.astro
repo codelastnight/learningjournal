@@ -5,7 +5,7 @@ const today = new Date();
 <footer>
 	Simon Zhang {today.getFullYear()}
 	<div class="links">
-		<p>loooook -></p>
+		<p class="hidden md:block">loooook -></p>
 		<a href="https://github.com/codelastnight/learningjournal" target="_blank">source code</a>
 		<a href="https://simonzhang.design" target="_blank">portfolio</a>
 
@@ -19,6 +19,6 @@ a {
 	@apply text-[blue] hover:underline;
 }
 .links {
-	@apply flex gap-2;
+	@apply flex gap-2 text-sm;
 }
 </style>
