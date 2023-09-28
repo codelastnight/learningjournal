@@ -25,8 +25,13 @@ const { href, class: className, ...props } = Astro.props;
 	// Handle clicks on each button.
 	buttons.forEach((button) => {
 		const href = button.getAttribute('data-href') 
-		if (queryString === href)
+		if (removeTrailingSlash(queryString) === removeTrailingSlash(href))
 		button.classList.add('active')
 		
 	});
+
+	function removeTrailingSlash(str: any) {
+		if (!str) return '';
+		return str.replace(/\/+$/, '')
+	}
 </script>
