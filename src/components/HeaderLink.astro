@@ -7,7 +7,7 @@ const { href, class: className, ...props } = Astro.props;
 
 ---
 
-<a data-tag-button href={href} data-href={href} class:list={[className ]} {...props}>
+<a data-tag-button={href}  href={href} class:list={[className ]} {...props}>
 	<slot />
 </a>
 <style>
@@ -24,12 +24,12 @@ const { href, class: className, ...props } = Astro.props;
 	 const queryString = import.meta.env.BASE_URL + '/' + window.location.search;
 	// Handle clicks on each button.
 	buttons.forEach((button) => {
-		const href = button.getAttribute('data-href') 
+		const href = button.getAttribute('data-tag-button') 
 		if (removeTrailingSlash(queryString) === removeTrailingSlash(href))
 		button.classList.add('active')
-		
 	});
 
+	//sometimes the website adds a slash at the end of url
 	function removeTrailingSlash(str: any) {
 		if (!str) return '';
 		return str.replace(/\/+$/, '')

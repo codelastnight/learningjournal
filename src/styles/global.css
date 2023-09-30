@@ -9,3 +9,8 @@ a:hover {
 a {
   color: blue;
 }
+
+.astro-code > code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
