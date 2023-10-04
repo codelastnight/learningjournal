@@ -47,15 +47,15 @@ i used some of the examples from [processing](https://processing.org/examples/co
 its a little annoying that have to have these open to figure out what the built in functions are, i wish the ide would simply tell me as i autofill or something.
 
 ![proccessing sketch of cat image moving with mouse](./resources/2023-10-04_16-06-42.gif)
+(this gif was annoying to make[^gif])
+[^gif]: why are gifs so annoying to make on windows??? i ended up recording the file on obs, and i manually set the video dimensions. then i used [adapter](https://macroplant.com/adapter), a free converter with a cute logo to turn it into a gif.
 
 ```java
 /**
 funny cat
 */
 PImage img;
-float x, y,scaleX;
-int directionX = 1;
-int directionY = 1;
+float x, y;
 float easing = 0.01;
 float imgw,imgh;
 void setup() {
@@ -68,8 +68,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
-    if (abs(mouseX - x) > 0.1) {
+  if (abs(mouseX - x) > 0.1) {
     x = x + (mouseX - x) * easing;
   }
   if (abs(mouseY - y) > 0.1) {
@@ -83,6 +82,8 @@ void draw() {
 
 }
 ```
+
+i basically copied the constrained example... but whatever. i like the `constrain()` function, and i probably need to sit and read the entire docs to see what functions exist.
 
 the examples show a very specific pattern for writing sketches,
 
