@@ -1,6 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
@@ -43,10 +42,18 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 			}
 			section {
 				@apply max-w-2xl w-full mt-12;
-				@apply px-3 lg:px-0
+				@apply px-3 lg:px-0; 
 			}
 			section a {
 				@apply flex justify-between hover:underline text-[blue];
+			}
+		    ul a {
+				@apply grid gap-1;
+				grid-template-columns: auto 12ch;
+
+			}
+			ul .date {
+				@apply flex justify-end;
 			}
 			h1 {
 				@apply text-[8vh] leading-none pointer-events-none;
