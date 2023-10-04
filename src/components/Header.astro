@@ -7,8 +7,11 @@ import { SITE_TITLE } from '../consts';
 		<div class="links">
 			<a href={import.meta.env.BASE_URL}> Back to Home</a>
 		</div>
-		<img src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" />
-		<h2>{SITE_TITLE}</h2>
+		<img class="icon" src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" />
+		<div class="relative">
+			<h2>{SITE_TITLE}</h2>
+			<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="absolute right-0 w-[7em]"/>
+		</div>
 		
 	</nav>
 </header>
@@ -27,7 +30,7 @@ import { SITE_TITLE } from '../consts';
 	a {
 		@apply hover:underline text-[blue];
 	}
-	img {
+	img.icon {
 		@apply h-[1.5em] hidden sm:block;
 	}
 	h2 {
