@@ -6,7 +6,7 @@ heroImage: "/blog-placeholder-5.jpg"
 tags: ["code"]
 ---
 
-I'm tying out processing. i've never really used java and i come from a JS and c# world so i'm also not particually familiar with the js OOP syntax. even in c#, i don't deal with weird syntax bc c# has streamlined and modernized the DX so much. so this is me on the lookout for processing/java equivlents to the workflows i am used to.
+I'm trying out processing. i've never really used java and i come from a JS and c# world so i'm also not particually familiar with the js OOP syntax. even in c#, i don't deal with weird syntax bc c# has streamlined and modernized the DX so much. so this is me on the lookout for processing/java equivlents to the workflows i am used to.
 
 lets see how processing(java) works:
 

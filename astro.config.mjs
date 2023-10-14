@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 import tailwind from "@astrojs/tailwind";
 
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://codelastnight.github.io',
@@ -11,5 +12,6 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
+
   integrations: [mdx(), sitemap(), tailwind()]
 });
