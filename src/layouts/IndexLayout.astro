@@ -15,9 +15,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				@apply text-xl;
                 
 			}
+            .skip {
+                @apply absolute -left-[10000px] top-auto w-[1px] h-[1px] overflow-hidden;
+                @apply focus:static focus:w-auto focus:h-auto;
+            }
 		</style>
 	</head>
 	<body>
+        <a class="skip" href="#blogList">Skip to Content</a>
 		<header class="flex justify-between px-3 lg:px-4 py-4 text-sm lg:text-base sticky top-0">
 			<div class="flex gap-2">
 				<a href="https://simonzhang.design" target="_blank">portfolio</a>

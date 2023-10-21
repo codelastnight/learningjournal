@@ -32,12 +32,15 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="fixed right-0 w-[12rem] lg:w-[50vw] h-[3rem] lg:h-[15em] bottom-[10%] md:bottom-[25%]"/>
 		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class=" fixed right-[15%] w-[2rem] md:w-[10vw] h-[6rem] md:h-[15em] top-[75%] md:top-[25%]"/>
 		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="fixed right-[30%] w-[1rem] md:w-[10vw] h-[7rem] md:h-[30em] top-[85%] md:top-[35%]"/>
-		<h1>Simon's Learning </h1>
-		<h1>Journal<img class="svg" src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" height="1em"/></h1>
-		<div class="flex gap-2 mt-2 text-[blue]">
+		<h1>Simon's Learning
+		<span class="md:block">Journal<img class="svg" src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" height="1em"/></span></h1>
+		<div class="flex flex-wrap gap-x-0.5 gap-y-1 mt-2 text-sm items-baseline">
+			<p class="mr-1">Sort by Tags:</p>
 			<HeaderLink href={import.meta.env.BASE_URL}>All</HeaderLink>
 			{Object.keys(tagsWithPosts).map((tag)=> (
-				<HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>{tag}: {tagsWithPosts[tag]}</HeaderLink>
+				<HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>
+					<p>{tag}: {tagsWithPosts[tag]}</p>
+					</HeaderLink>
 			))}
 		</div>
 		
@@ -114,4 +117,6 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 	.svg {
 		@apply inline-block h-[1em] ml-2;
 	}
+
+
 </style>
