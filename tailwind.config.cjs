@@ -6,5 +6,20 @@ module.exports = {
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
-	],
+		function ({ addComponents, theme }) {
+			addComponents({
+				'a': {
+					color: "blue",
+					textDecoration: 'underline',
+					background: "white"
+				},
+				'a:hover': {
+					color: "white",
+					background: "blue"
+				}
+			});
+		},
+
+	]
 }
+

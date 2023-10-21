@@ -3,13 +3,6 @@ body {
   font-family: "Arial", sans-serif;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-a {
-  color: blue;
-}
-
 .astro-code > code {
   white-space: pre-wrap;
   word-wrap: break-word;

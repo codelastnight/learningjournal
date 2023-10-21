@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import IndexLayout from '../layouts/IndexLayout.astro';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import Tags from '../components/Tags.astro';
@@ -29,105 +27,91 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style lang="postcss">
-			body {
-				@apply grid min-h-[100dvh] grid-cols-1 overflow-x-hidden ;
-				grid-template-rows: 1fr auto;
-			}
-			main {
-				@apply grid  justify-center mb-6 ;
-				@apply text-xl;
-			}
-			section {
-				@apply max-w-2xl w-full mt-12 relative;
-				@apply px-3 lg:px-0; 
-			}
-			section a {
-				@apply flex justify-between hover:underline text-[blue];
-			}
-		    ul a {
-				@apply grid gap-1;
-				grid-template-columns: auto 12ch;
-			}
-			ul .date {
-				@apply flex justify-end;
-			}
-			h1 {
-				@apply text-[8vh] leading-none pointer-events-none;
-			}
-			ul {
-				@apply mt-2 w-full;
-			}
-			li {
-				@apply  border-current pt-8 pb-4;
-			}
-			img {
-				@apply inline-block h-[1em] ml-2;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<section>
-				<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="absolute right-0 w-[7em]"/>
+<IndexLayout>
+	<section>
+		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="fixed right-0 w-[12rem] lg:w-[50vw] h-[3rem] lg:h-[15em] bottom-[10%] md:bottom-[25%]"/>
+		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class=" fixed right-[15%] w-[2rem] md:w-[10vw] h-[6rem] md:h-[15em] top-[75%] md:top-[25%]"/>
+		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="fixed right-[30%] w-[1rem] md:w-[10vw] h-[7rem] md:h-[30em] top-[85%] md:top-[35%]"/>
+		<h1>Simon's Learning </h1>
+		<h1>Journal<img class="svg" src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" /></h1>
+		<div class="flex gap-2 mt-2 text-[blue]">
+			<HeaderLink href={import.meta.env.BASE_URL}>All</HeaderLink>
+			{Object.keys(tagsWithPosts).map((tag)=> (
+				<HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>{tag}: {tagsWithPosts[tag]}</HeaderLink>
+			))}
+		</div>
+		
+	</section>
+	<ul id="blogList" class="flex flex-col flex-wrap">
+		
+		{
+			posts.map((post) => (
+				<li>
+					<div>
+						<h4 class="title">									
+							<a href={`${import.meta.env.BASE_URL}/${post.slug}/`}>
+								{post.data.title}									
+							</a>
+						</h4>
+						<p class="date">
+							<FormattedDate date={post.data.pubDate} />
+						</p>
+					</div>	
+				<Tags tags={post.data.tags} />	
+				</li>
+			))
+		}
+	</ul>
+</IndexLayout>
 
-				<h1>Simon's Learning </h1>
-				<h1>Journal<img src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" /></h1>
-				<div class="flex gap-2 mt-2 text-[blue]">
-					<HeaderLink href={import.meta.env.BASE_URL}>All</HeaderLink>
-					{Object.keys(tagsWithPosts).map((tag)=> (
-						<HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>{tag}: {tagsWithPosts[tag]}</HeaderLink>
-					))}
-				</div>
-				<ul id="blogList">
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`${import.meta.env.BASE_URL}/${post.slug}/`}>
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-									
-								</a>
-							<Tags tags={post.data.tags} />
-								
-							</li>
-						))
-						
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-		<script lang="ts">
-			document.addEventListener("DOMContentLoaded", (event) => {
-				console.log("Made with <3 by Simon https://github.com/codelastnight/learningjournal");
-				filterBlogList()
-			});
-			
-			function filterBlogList() {
-				const queryString = window.location.search;
-				const queryTag = new URLSearchParams(queryString).get('tag');
-				if (!queryTag) return;
 
-				const ul = document.getElementById("blogList");
-				const listItems = ul.getElementsByTagName('li');
+<script lang="ts">
+	document.addEventListener("DOMContentLoaded", (event) => {
+		console.log("Made with <3 by Simon https://github.com/codelastnight/learningjournal");
+		filterBlogList()
+	});
+	
+	function filterBlogList() {
+		const queryString = window.location.search;
+		const queryTag = new URLSearchParams(queryString).get('tag');
+		if (!queryTag) return;
 
-				for (const item of listItems) {
-					const element = item.getElementsByClassName("tags")
-					const tags = element[0].getAttribute('data-tags') 
-					const tagArray = !!tags ? tags.split(',') : [];
-					if (tagArray.indexOf(queryTag) === -1) {
-						item.style.display = 'none'
-					}
-				}
+		const ul = document.getElementById("blogList");
+		const listItems = ul.getElementsByTagName('li');
+
+		for (const item of listItems) {
+			const element = item.getElementsByClassName("tags")
+			const tags = element[0].getAttribute('data-tags') 
+			const tagArray = !!tags ? tags.split(',') : [];
+			if (tagArray.indexOf(queryTag) === -1) {
+				item.style.display = 'none'
 			}
-		</script>
-	</body>
+		}
+	}
+</script>
 
-</html>
+<style lang="postcss">
+	section {
+		@apply mt-6 ;
+	}
+	
+	ul div {
+		@apply grid gap-1;
+		grid-template-columns: auto 12ch;
+	}
+	ul .date {
+		@apply flex justify-end;
+	}
+	h1 {
+		@apply text-[8vh] leading-none pointer-events-none;
+	}
+	ul {
+		@apply mt-2 w-full md:max-w-lg;
+	}
+	li {
+		@apply border-current pt-8 pb-4 w-full;
+	}
+	.svg {
+		@apply inline-block h-[1em] ml-2;
+	}
+</style>

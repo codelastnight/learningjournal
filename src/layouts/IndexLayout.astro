@@ -1,0 +1,35 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style lang="postcss">
+			body {
+				@apply min-h-[100dvh] overflow-x-hidden ;
+			}
+			main {
+				@apply w-full px-3 lg:px-4 py-4 ;
+				@apply text-xl;
+                
+			}
+		</style>
+	</head>
+	<body>
+		<header class="flex justify-between px-3 lg:px-4 py-4 text-sm lg:text-base sticky top-0">
+			<div class="flex gap-2">
+				<a href="https://simonzhang.design" target="_blank">portfolio</a>
+				<a href="https://github.com/codelastnight/learningjournal" target="_blank">source code</a>
+			</div>
+			<p>Simon Zhang 2023</p>
+			
+		</header>
+        <main>
+            <slot />
+        </main>
+	
+	</body>
+
+</html>
