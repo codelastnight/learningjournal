@@ -6,7 +6,7 @@ heroImage: "/blog-placeholder-5.jpg"
 tags: ["code"]
 ---
 
-I'm trying out processing. i've never really used java and i come from a JS and c# world so i'm also not particually familiar with the js OOP syntax. even in c#, i don't deal with weird syntax bc c# has streamlined and modernized the DX so much. so this is me on the lookout for processing/java equivlents to the workflows i am used to.
+I'm trying out processing. i've never really used java and i come from a JS and c# world so i'm also not particularly familiar with the js OOP syntax. even in c#, i don't deal with weird syntax bc c# has streamlined and modernized the DX so much. so this is me on the lookout for processing/java equivalents to the workflows i am used to.
 
 lets see how processing(java) works:
 
@@ -30,7 +30,7 @@ words.forEach(name -> System.out.println(name))
 
 ```
 
-so i guess i nver really thought about it but `for()` loops vs. `.foreach()` are different in very specific use cases where u have to modify (specifically add/remove) things from that array you are accessing.[^jsiterator]
+so i guess i never really thought about it but `for()` loops vs. `.foreach()` are different in very specific use cases where u have to modify (specifically add/remove) things from that array you are accessing.[^jsiterator]
 
 [^jsiterator]: [Java external vs internal iterator](https://zetcode.com/java/externalinternaliterator/)
 
@@ -83,7 +83,7 @@ void draw() {
 }
 ```
 
-i basically copied the constrained example... but whatever. i like the `constrain()` function, and i probably need to sit and read the entire docs to see what functions exist.
+i basically copied the constrained example... i like the `constrain()` function, and i probably need to sit and read the entire docs to see what functions exist.
 
 the examples show a very specific pattern for writing sketches,
 

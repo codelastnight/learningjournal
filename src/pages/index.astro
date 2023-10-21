@@ -10,9 +10,12 @@ import HeaderLink from '../components/HeaderLink.astro';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => - a.data.pubDate.valueOf() + b.data.pubDate.valueOf()
 );
+
 interface TagList {
 [key:string]: number
 }
+
+// get all the tags throughout posts
 const tagsWithPosts = posts.reduce((allTags, post) => {
   const postTags = post.data.tags;
   if (postTags) {
