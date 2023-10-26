@@ -1,16 +1,16 @@
 ---
-import IndexLayout from '../layouts/IndexLayout.astro';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
-import Tags from '../components/Tags.astro';
-import HeaderLink from '../components/HeaderLink.astro';
+import IndexLayout from "../layouts/IndexLayout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import Tags from "../components/Tags.astro";
+import HeaderLink from "../components/HeaderLink.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => - a.data.pubDate.valueOf() + b.data.pubDate.valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => -a.data.pubDate.valueOf() + b.data.pubDate.valueOf()
 );
 
 interface TagList {
-[key:string]: number
+  [key: string]: number;
 }
 
 // get all the tags throughout posts
@@ -19,78 +19,105 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
   if (postTags) {
     postTags.forEach((tag) => {
       if (!allTags[tag]) allTags[tag] = 1;
-       else allTags[tag] += 1;
+      else allTags[tag] += 1;
     });
   }
   return allTags;
-}, {}as TagList)
-
+}, {} as TagList);
 ---
 
 <IndexLayout>
-	<section>
-		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="fixed right-0 w-[12rem] lg:w-[50vw] h-[3rem] lg:h-[15em] bottom-[10%] md:bottom-[25%]"/>
-		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class=" fixed right-[15%] w-[2rem] md:w-[10vw] h-[6rem] md:h-[15em] top-[75%] md:top-[25%]"/>
-		<img src={import.meta.env.BASE_URL + "/cat_angry.jpg"} role="presentation" class="fixed right-[30%] w-[1rem] md:w-[10vw] h-[7rem] md:h-[30em] top-[85%] md:top-[35%]"/>
-		<h1>Simon's Learning
-		<span class="md:block">Journal<img class="svg" src={import.meta.env.BASE_URL + "/smile.svg"} role="presentation" height="1em"/></span></h1>
-		<div class="flex flex-wrap gap-x-0.5 gap-y-1 mt-2 text-sm items-baseline">
-			<p class="mr-1">Sort by Tags:</p>
-			<HeaderLink href={import.meta.env.BASE_URL}>All</HeaderLink>
-			{Object.keys(tagsWithPosts).map((tag)=> (
-				<HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>
-					<p>{tag}: {tagsWithPosts[tag]}</p>
-					</HeaderLink>
-			))}
-		</div>
-		
-	</section>
-	<ul id="blogList" class="flex flex-col flex-wrap">
-		
-		{
-			posts.map((post) => (
-				<li>
-					<div>
-						<h2 class="title">									
-							<a href={`${import.meta.env.BASE_URL}/${post.slug}/`}>
-								{post.data.title}									
-							</a>
-						</h2>
-						<p class="date">
-							<FormattedDate date={post.data.pubDate} />
-						</p>
-					</div>	
-				<Tags tags={post.data.tags} />	
-				</li>
-			))
-		}
-	</ul>
+  <section>
+    <img
+      src={import.meta.env.BASE_URL + "/cat_angry.jpg"}
+      role='presentation'
+      class='fixed right-0 w-[12rem] lg:w-[50vw] h-[3rem] lg:h-[15em] bottom-[10%] md:bottom-[25%]'
+    />
+    <img
+      src={import.meta.env.BASE_URL + "/cat_angry.jpg"}
+      role='presentation'
+      class='fixed right-[15%] w-[2rem] md:w-[10vw] h-[6rem] md:h-[15em] top-[75%] md:top-[25%]'
+    />
+    <img
+      src={import.meta.env.BASE_URL + "/cat_angry.jpg"}
+      role='presentation'
+      class='fixed right-[30%] w-[1rem] md:w-[10vw] h-[7rem] md:h-[30em] top-[85%] md:top-[35%]'
+    />
+    <h1>
+      Simon's Learning
+      <span class='md:block'
+        >Journal<img
+          class='svg'
+          src={import.meta.env.BASE_URL + "/smile.svg"}
+          role='presentation'
+          height='1em'
+        /></span
+      >
+    </h1>
+    <div
+      class='flex flex-wrap gap-x-0.5 gap-y-1 mt-2 text-sm items-baseline collapse'
+      data-js-hidden
+    >
+      <p class='mr-1'>Sort by Tags:</p>
+      <HeaderLink href={import.meta.env.BASE_URL}>All</HeaderLink>
+      {
+        Object.keys(tagsWithPosts).map((tag) => (
+          <HeaderLink href={`${import.meta.env.BASE_URL}/?tag=${tag}`}>
+            <p>
+              {tag}: {tagsWithPosts[tag]}
+            </p>
+          </HeaderLink>
+        ))
+      }
+    </div>
+  </section>
+  <ul id='blogList' class='flex flex-col flex-wrap'>
+    {
+      posts.map((post) => (
+        <li>
+          <div>
+            <h2 class='title'>
+              <a href={`${import.meta.env.BASE_URL}/${post.slug}/`}>
+                {post.data.title}
+              </a>
+            </h2>
+            <p class='date'>
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+          </div>
+          <Tags tags={post.data.tags} />
+        </li>
+      ))
+    }
+  </ul>
+  <div class='pb-[25vh]'></div>
 </IndexLayout>
 
+<script lang='ts'>
+document.addEventListener("DOMContentLoaded", (event) => {
+	console.log(
+		"Made with <3 by Simon https://github.com/codelastnight/learningjournal"
+	);
+	filterBlogList();
+});
 
-<script lang="ts">
-	document.addEventListener("DOMContentLoaded", (event) => {
-		console.log("Made with <3 by Simon https://github.com/codelastnight/learningjournal");
-		filterBlogList()
-	});
-	
-	function filterBlogList() {
-		const queryString = window.location.search;
-		const queryTag = new URLSearchParams(queryString).get('tag');
-		if (!queryTag) return;
+function filterBlogList() {
+	const queryString = window.location.search;
+	const queryTag = new URLSearchParams(queryString).get("tag");
+	if (!queryTag) return;
 
-		const ul = document.getElementById("blogList");
-		const listItems = ul.getElementsByTagName('li');
+	const ul = document.getElementById("blogList");
+	const listItems = ul.getElementsByTagName("li");
 
-		for (const item of listItems) {
-			const element = item.getElementsByClassName("tags")
-			const tags = element[0].getAttribute('data-tags') 
-			const tagArray = !!tags ? tags.split(',') : [];
-			if (tagArray.indexOf(queryTag) === -1) {
-				item.style.display = 'none'
-			}
+	for (const item of listItems) {
+		const element = item.getElementsByClassName("tags");
+		const tags = element[0].getAttribute("data-tags");
+		const tagArray = !!tags ? tags.split(",") : [];
+		if (tagArray.indexOf(queryTag) === -1) {
+			item.style.display = "none";
 		}
 	}
+}
 </script>
 
 <style lang="postcss">

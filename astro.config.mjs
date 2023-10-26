@@ -9,9 +9,9 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://codelastnight.github.io',
   base: '/learningjournal',
-  image: {
-    service: passthroughImageService(),
-  },
+  // image: {
+  //   service: passthroughImageService(),
+  // },
 
   integrations: [mdx(), sitemap(), tailwind()]
 });
