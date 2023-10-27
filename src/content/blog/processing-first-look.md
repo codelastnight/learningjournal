@@ -2,7 +2,6 @@
 title: "im trying processing for the first time"
 description: "me when i process things"
 pubDate: "Oct 04 2023"
-heroImage: "/blog-placeholder-5.jpg"
 tags: ["code"]
 ---
 

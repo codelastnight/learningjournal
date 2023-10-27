@@ -1,0 +1,47 @@
+---
+import { getImage } from "astro:assets";
+// watch out this doesnt check if its actually an image or not at the moment
+interface Props {
+  pattern: string;
+  height: string;
+}
+const { pattern = "jpg", height = "15rem" } = Astro.props;
+const images = await Astro.glob("/src/content/blog/**/*.{jpg,png}").then(
+  (files) => {
+    return files.map((file) => file.default);
+  }
+);
+const filteredImages = images.filter((img) => img.src.includes(pattern));
+
+let optimize = [];
+for (const image of filteredImages) {
+  const optiImage = await getImage({
+    src: image,
+  });
+  optimize.push(optiImage);
+}
+---
+
+<ul class='flex gap-1 flex-wrap w-full not-prose justify-center'>
+  {
+    optimize.map((img) => (
+      <li style={`height: ${height}`}>
+        <img src={img.src} alt='' height={img.options.height} loading='lazy' />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  li {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    vertical-align: middle;
+  }
+</style>
