@@ -1,1 +1,17 @@
-<div></div>
+<div class='fonttester' contenteditable='true'>Glasgow Central Grotesk</div>
+
+<style lang="postcss">
+  /* Register your custom font family and tell the browser where to find it. */
+  @font-face {
+    font-family: "GlasgowCentralGrotesk";
+    src: url("/fonts/GlasgowCentralGroteskTester0.1.7.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  .fonttester {
+    font-family: "GlasgowCentralGrotesk", sans-serif;
+    @apply px-2 py-1 border border-dashed border-blue-500 text-2xl;
+
+  }
+</style>
