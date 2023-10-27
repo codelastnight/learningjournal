@@ -11,8 +11,8 @@ const images = await Astro.glob("/src/content/blog/**/*.{jpg,png}").then(
     return files.map((file) => file.default);
   }
 );
-const filteredImages = images.filter((img) => img.src.includes(pattern));
 
+const filteredImages = images.filter((img) => img.src.includes(pattern));
 let optimize = [];
 for (const image of filteredImages) {
   const optiImage = await getImage({

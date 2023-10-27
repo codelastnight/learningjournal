@@ -2,8 +2,8 @@
 title: "creating a typeface for glasgow central station"
 description: "based on some old painted signs"
 pubDate: "Oct 12 2023"
-updatedDate: "Oct 21 2023"
-heroImage: "./orignaltype1.jpg"
+updatedDate: "Oct 26 2023"
+heroImage: "./image-1.png"
 tags: ["typography"]
 ---
 
@@ -31,8 +31,9 @@ import type3 from "./WhatsApp Image 2023-10-10 at 05.26.59_dd8a30dc.jpg";
     alt='even more signs depicting station names'
   />
 </div>
-
-[Paula Pokorna](https://paulapokorna.wordpress.com/interactive-systems/), a student from last year, started on this custom fontface. Now, its passed to me to finish it. In her own words:
+[Paula Pokorna](https://paulapokorna.wordpress.com/interactive-systems/), a student
+from last year, started on this custom fontface. Now, its passed to me to finish
+it. In her own words:
 
 ![Email from Paula: You go ahead and get crazy with it, I'm not too precious about it.](./pokorna_msg.jpg)
 
@@ -89,25 +90,42 @@ I discovered some useful insights from a deconstruction of the original sign:
 - slanted w, v, and y (sometimes wider as well)
 - flatter circles, such as on the o and s
 
-## fonts are like faces
-
-so drawing faces is especially difficult because every person has seen so many faces in their life that they can immediately tell when a drawn face looks "off". in the same way, I think people are able to tell when a font doesn't look "right".
+![Alt text](./image-2.png)
 
 ## off-kilter, now in digital
 
-With this in mind, the font only needs minute, small offsets for a person to notice that letters look "off". I decided to reduce the irregularities between letters to test this theory. To stay true to the mechanical nature of digital fonts, I also decided to standardize the letters in various ways.
+### fonts are like faces
+
+so drawing faces is especially difficult because every person has seen so many faces in their life that they can immediately tell when a drawn face looks "off". in the same way, I think people are able to tell when a font doesn't look "right".
+
+With this hypothesis in mind, I decided the font **only needs minute, small offsets** for a person to notice that letters look "off". I reduced the irregularities between letters to test this theory. To stay true to the mechanical nature of digital fonts, I also standardized the letters in various ways, from consistent widths of strokes to a more even kerning.
 
 ### digital "hitches" from cutting stencils
 
 The painted sign is likely made using individual stencils of letters, and before the era of laser cutters and cnc, people had to cut these by hand. One common effect of hand cutting is the fact that curved lines are difficult to cut in one stroke, leading to "hitches" on the strokes. With the pen tool, I attempted to digitally "hitch" by using only straight lines.
 
+![Alt text](./image-11.png)
 This was successful with some letters, and gave the intended "wobble" effect I was looking for. however, on extremely curved letters like "b" (as shown above), the straight lines were too noticeable.
 
 ### "curve and hitch"
 
 One thing with hand cutting I didn't consider on my first run, is that while you _can_ do curved lines, you are limited in length by the arc of your arm length. this leads to a "curve and hitch" effect where curved lines are periodically broken with a sharp angles where you reposition your arm to complete the rest of the cut.
 
-[tbd]
+**[tbd] i havent done this yet lol**
+
+## design and alignment
+
+Much of my designing font knowledge comes from [design with fontforge](http://designwithfontforge.com/en-US/index.html), which goes pretty in depth on how to create a font from scratch.
+
+I used the Capital "B" as a starting point to complete the font. this made for a heavier weighted bottom. I also used the B to standardize the stem width, and to get most of the characters to a consistant width.
+
+Theres no clever techniques here, just the good ol' pen tool.
+
+![Alt text](./image-12.png)
+
+lower case letters are harder, as theres a lot more curves. I sued the letter I added extra lines so curved lines can go "over" the actual alignment line. This makes the font look "equal" in size optically.
+![Alt text](./image-13.png)
+![Alt text](./image-14.png)
 
 ## fontbuilding with fontforge
 
@@ -115,9 +133,22 @@ I used the open source software [fontforge](https://fontforge.org/en-US/)
 which, despite the vintage interface, offers quite a powerful set of tools to create fonts.
 
 I used a couple of kerning matrices to get the spacing between the tables to look right. these tables allow me to "match" various characters together at once, speeding up the kerning process quite a bit.
+![Alt text](./image-3.png)
 
 I added stylistic alternatives, which lets me have multiple sets of drawn letters.
+![Alt text](./image-4.png)
 
 These combined with a simple contextual alternate rule allows for the font to have slight variations depending on the the set of characters. In this case, if the characters o, l, and t appear together twice in a row (tt, oo, to, lt, etc) then the the font will automatically switch between stylistic alternates.
+![Alt text](./image-5.png)
 
 Finally, fontforge offers error checking to make sure fonts are compliant with opentype standards. i may have ignored these.
+
+## the font in all its glory
+
+![Alt text](./image-7.png)
+
+![Alt text](./image-8.png)
+
+![Alt text](./image-9.png)
+
+![Alt text](./image-10.png)
