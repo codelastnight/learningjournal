@@ -35,6 +35,13 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 			.title h1 {
 				@apply mb-1 text-3xl md:text-4xl font-bold;
 			}
+      :global(.toc) {
+        @apply bg-gray-100 px-3 py-2;
+      }
+      :global(.toc::before) {
+        content: "Table of Contents";
+        @apply font-bold;
+      }
 		</style>
   </head>
 

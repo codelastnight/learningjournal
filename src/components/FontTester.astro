@@ -1,5 +1,22 @@
-<div class='fonttester' contenteditable='true'>Glasgow Central Grotesk</div>
-
+<div
+  class='fonttester no-prose leading-none'
+  id='fonttest'
+  contenteditable='true'
+>
+  Glasgow Central Grotesk
+</div>
+<label>
+  Font Size:
+  <input
+    type='range'
+    min='1'
+    max='5'
+    value='2.5'
+    step='0.5'
+    class='slider'
+    id='fonttestSlider'
+  />
+</label>
 <style lang="postcss">
   /* Register your custom font family and tell the browser where to find it. */
   @font-face {
@@ -11,7 +28,22 @@
   }
   .fonttester {
     font-family: "GlasgowCentralGrotesk", sans-serif;
-    @apply px-2 py-1 border border-dashed border-blue-500 text-2xl;
+    @apply px-3 py-2 border border-dashed border-blue-500 ;
+    font-size: 2.5rem;
 
   }
 </style>
+
+<script>
+  const test = document.getElementById("fonttest");
+  const range = document.getElementById("fonttestSlider");
+  if (range) {
+    range.addEventListener(
+      "change",
+      function () {
+        test.style.fontSize = `${range.value}rem`;
+      },
+      false
+    );
+  }
+</script>
