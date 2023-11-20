@@ -20,12 +20,18 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 				@apply grid place-items-center px-3 lg:px-0;
 			}
 			article {
-				@apply prose prose-hr:my-4 max-w-prose;
-				@apply prose-h2:mb-1;
+				@apply prose prose-hr:my-4 max-w-prose w-full overflow-clip;
+				@apply prose-h2:mb-1 ;
+        @apply prose-h1:mb-2 prose-h1:font-bold prose-h1:text-lg;
+
 			}
 			.hero-image {
-				@apply my-3 w-full;
+				@apply my-3 w-full max-w-prose;
 			}
+      header {
+        @apply my-3 w-full max-w-prose;
+
+      }
 			.hero-image img {
 				@apply rounded-xl object-cover w-full max-h-[50vh] object-center;
 			}
@@ -48,34 +54,34 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
   <body>
     <Header />
     <main>
-      <article>
-        <div class='hero-image'>
+      <div class='hero-image'>
+        {
+          heroImage ? (
+            <div class='w-full my-auto'>
+              <img height={heroImage.height} src={heroImage.src} alt='' />
+            </div>
+          ) : (
+            <div class='mt-12' />
+          )
+        }
+      </div>
+      <header class='title'>
+        <div class='date'>
+          <FormattedDate date={pubDate} />
           {
-            heroImage && (
-              <div class='w-full my-auto'>
-                <img height={heroImage.height} src={heroImage.src} alt='' />
-              </div>
+            updatedDate && (
+              <span class='italic'>
+                Last updated on <FormattedDate date={updatedDate} />
+              </span>
             )
           }
         </div>
-        <div class='title'>
-          <div class='date'>
-            <FormattedDate date={pubDate} />
-            {
-              updatedDate && (
-                <span class='italic'>
-                  Last updated on <FormattedDate date={updatedDate} />
-                </span>
-              )
-            }
-          </div>
-          <h1>{title}</h1>
-          <Tags {tags} />
-          <hr />
-        </div>
-        <div class='prose max-w-prose'>
-          <slot />
-        </div>
+        <h1>{title}</h1>
+        <Tags {tags} />
+        <hr />
+      </header>
+      <article class='prose max-w-prose w-full'>
+        <slot />
       </article>
     </main>
     <Footer />
