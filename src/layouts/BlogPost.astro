@@ -21,10 +21,13 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 			}
 			article {
 				@apply prose prose-hr:my-4 max-w-prose w-full overflow-clip;
-				@apply prose-h2:mb-1 ;
-        @apply prose-h1:mb-2 prose-h1:font-bold prose-h1:text-lg;
+			
+        @apply prose-h2:mb-1 ;
 
 			}
+      :global(.customProse a) {
+        @apply break-all;
+      }
 			.hero-image {
 				@apply my-3 w-full max-w-prose;
 			}
@@ -80,7 +83,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         <Tags {tags} />
         <hr />
       </header>
-      <article class='prose max-w-prose w-full'>
+      <article class='prose customProse'>
         <slot />
       </article>
     </main>
