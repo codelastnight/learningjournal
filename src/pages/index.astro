@@ -94,30 +94,30 @@ const tagsWithPosts = posts.reduce((allTags, post) => {
 </IndexLayout>
 
 <script lang='ts'>
-document.addEventListener("DOMContentLoaded", (event) => {
-	console.log(
-		"Made with <3 by Simon https://github.com/codelastnight/learningjournal"
-	);
-	filterBlogList();
-});
+  document.addEventListener("DOMContentLoaded", (event) => {
+    console.log(
+      "Made with <3 by Simon https://github.com/codelastnight/learningjournal"
+    );
+    filterBlogList();
+  });
 
-function filterBlogList() {
-	const queryString = window.location.search;
-	const queryTag = new URLSearchParams(queryString).get("tag");
-	if (!queryTag) return;
+  function filterBlogList() {
+    const queryString = window.location.search;
+    const queryTag = new URLSearchParams(queryString).get("tag");
+    if (!queryTag) return;
 
-	const ul = document.getElementById("blogList");
-	const listItems = ul.getElementsByTagName("li");
+    const ul = document.getElementById("blogList");
+    const listItems = ul.getElementsByTagName("li");
 
-	for (const item of listItems) {
-		const element = item.getElementsByClassName("tags");
-		const tags = element[0].getAttribute("data-tags");
-		const tagArray = !!tags ? tags.split(",") : [];
-		if (tagArray.indexOf(queryTag) === -1) {
-			item.style.display = "none";
-		}
-	}
-}
+    for (const item of listItems) {
+      const element = item.getElementsByClassName("tags");
+      const tags = element[0].getAttribute("data-tags");
+      const tagArray = !!tags ? tags.split(",") : [];
+      if (tagArray.indexOf(queryTag) === -1) {
+        item.style.display = "none";
+      }
+    }
+  }
 </script>
 
 <style lang="postcss">
@@ -126,11 +126,11 @@ function filterBlogList() {
 	}
 	
 	ul div {
-		@apply grid gap-1;
-		grid-template-columns: auto 12ch;
+		@apply md:grid gap-1 ;
+		grid-template-columns: auto 5em;
 	}
 	ul .date {
-		@apply flex justify-end;
+		@apply flex md:justify-end text-base;
 	}
 	h1 {
 		@apply text-[8vh] leading-none pointer-events-none;
