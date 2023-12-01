@@ -61,7 +61,12 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         {
           heroImage ? (
             <div class='w-full my-auto'>
-              <img height={heroImage.height} src={heroImage.src} alt='' />
+              <img
+                height={heroImage.height}
+                width={heroImage.width}
+                src={heroImage.src}
+                alt=''
+              />
             </div>
           ) : (
             <div class='mt-12' />

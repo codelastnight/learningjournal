@@ -1,0 +1,62 @@
+---
+/// https://web.dev/articles/lazy-loading-video
+
+interface Props {
+  src: string;
+  width?: string;
+  height?: string;
+  autoplay?: string;
+}
+
+const { src, width = "100%", height = "720", autoplay = true } = Astro.props;
+---
+
+<video
+  class='lazy'
+  autoplay={autoplay}
+  controls
+  loop={autoplay}
+  muted={autoplay}
+  playsinline={autoplay}
+  preload='metadata'
+  height={height}
+  style=`width: ${width}; height: auto;`
+>
+  <source data-src={src} type='video/webm' />
+</video>
+
+<script>
+  function lazyLoadVideos() {
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+    if ("IntersectionObserver" in window) {
+      var lazyVideoObserver = new IntersectionObserver(function (
+        entries,
+        observer
+      ) {
+        entries.forEach(function (video) {
+          if (video.isIntersecting) {
+            for (var source in video.target.children) {
+              var videoSource = video.target.children[source];
+              if (
+                typeof videoSource.tagName === "string" &&
+                videoSource.tagName === "SOURCE"
+              ) {
+                videoSource.src = videoSource.dataset.src;
+              }
+            }
+
+            video.target.load();
+            video.target.classList.remove("lazy");
+            lazyVideoObserver.unobserve(video.target);
+          }
+        });
+      });
+
+      lazyVideos.forEach(function (lazyVideo) {
+        lazyVideoObserver.observe(lazyVideo);
+      });
+    }
+  }
+  document.addEventListener("DOMContentLoaded", lazyLoadVideos);
+</script>
