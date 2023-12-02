@@ -10,7 +10,7 @@ tags:
 import { YouTube } from "@astro-community/astro-embed-youtube";
 import Video from "../../../components/Video.astro";
 
-## intro
+## what i started with
 
 conceptually i was imagining how it feels to go through tiktok: overstimulated by information, video, and images. with each swipe, you can go from a cute cat video to videos on police violence.
 
@@ -32,26 +32,85 @@ also has a making-of:
 
 I was looking at early windows-7 type images:
 ![fruteger aero inspo](<./Screenshot 2023-12-01 142543.jpg>)
-and also chinese tea graphics
-![chinese tea graphics](<./Screenshot 2023-12-01 145222.jpg>)
+
 like i know fruger aero/metro is like suuuper in rn so its like, im following trends or whatever but i still think it looks cool + has very personal nostalgia for me.
 
 ### the plan
 
 so the plan is to make 2-3 different scenes, around 30s each. (1:30 is a long time!) I can make an intro, and and also a credit sequence to cut down on the actual amount of time for the content.
 
-To me, learning after effects, which is a new software to me, was a larger priority then to make a cohesive piece. I wanted to mess around to learn specific techniques.
+To me, learning after effects, which is a new software to me, was a larger priority then to make a cohesive piece. I wanted to mess around and learn specific techniques.
 
 ## the cat video section
 
-import video1 from "./1553-4821-2.webm";
+I downloaded some cat videos, keyed out the green, and placed them around the screen in after effects. for whatever reason after effects could not handle the amount of cats on screen (too many cats!)
 
-<Video src={video1} />
+so this was all i could muster:
+
+import video4 from "./Cats World 1-4.webm";
+
+<Video src={video4} />
+
+First thing I tried was using mocha to track video and get the "camera shake" to transfer over to the scene. This turned out to be a very difficult task. For one, I had a hard time getting the tracking data out of the mocha plugin into a useable form of data.
+
+After effects, unlike 3d software, doesnt use cameras, but layers. So this proved difficult to get all the objects to move in the way that i wanted. I was able to get the virtual camera to move, but not in a way that made any sense.
+
+So after an hour of agonizing over this, I gave up and moved to blender. I already knew how to track videos in blender, so this was a breeze.
 
 import video2 from "./0770-5605-1.webm";
 
 <Video src={video2} />
 
+From this I added a bunch of videos as textures to planes, making sure to modify the shader to emit no shadows, have the color route to emission on top of the matte, and to route the alpha data into the alpha shader.
+
+import video1 from "./1553-4821-2.webm";
+
+<Video src={video1} />
+
+To get the "soft edge" look for the background images and videos, I created a bw picture going from white to black, and used that as an alpha mask on the shader. delightfully clunky.
+
+## creating the title card.
+
+I was looking at chinese tea graphics from the local chinese supermarket. these kitchy designs are often the inspiration for many great chinese designers (other asian countries have this too, but have a different aesthetic language).
+
+![chinese tea graphics](<./Screenshot 2023-12-01 145222.jpg>)
+
+I wanted to replicate the emotion of looking at these designs thru an intro sequence. with a lotus flower included, of course.
+
+I learned how to use the Puppet Pin tool to move the grass in a hypnotic way. The metro flowers are a video clip
+
+import titlecard from "./Sky And Grass-6(1).webm";
+
+<Video src={titlecard} />
+
+This also reminds me of chinese ads i used to watch between my cartoons at my grandparents home in hangzhou.
+
+## embracing my american roots
+
+something Ive been thinking about recently is identity as asian-american. I have always accepted my asian side of myself (i am ethnically chinese and japanese). however, I grew up in america, and am socialized as so. I wouldn't fit in if i go to china or japan. My personality, politics, language are shaped from where I grew up in, the pacific northwest.
+
+I'm not necessarily proud to be american. my laundry list of critiques on imperial america only gets longer by the day. Unfortunately at the end of the day, I am american. I love the people and the culture. I cannot ignore this part of myself.
+
+### thinking suburbs with underscores & jane remover's Uncanny Long Arms.
+
+So this is the song:
+
+<YouTube id='https://youtu.be/BYpKQ65DugI' />
+
+These two trans artists are some of my biggest influences. Their exploration of noise, punk, indie rock from an EDM producer lens got my thinking cap on real good. What did it mean to grow up in an american suburb, a place devoid of social interaction and culture? This also relates heavily with Seattle's architecture, which is known to not have a local vernacular, instead being made of cheap constructionist buildings and starter kit homes from the east.
+
+I realized i didnt have much footage of my hometown, so I got my google maps open and recorded myself exploring the area.
+
 import video3 from "./2023-11-02 23-23-10-3.webm";
 
 <Video src={video3} />
+
+Inspired by local punk/indie rock music videos, i treated this clip with a noise filter and a "echo" filter to mimic a low-shutter speed camera.
+
+import video5 from "./Sadsadasdasdasd-5.webm";
+
+<Video src={video5} />
+
+### compressing videos
+
+for future reference: I used handbrake to compress videos, using the webm container, codec vb8, at bitrate of 1000 w/ 2-passes. this compressed the videos down to a decent size ({'<10'} mb).
