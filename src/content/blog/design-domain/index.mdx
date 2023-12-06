@@ -26,3 +26,22 @@ The next thing I tried was GlovePIE, which was promising. It had a scripting int
 I thought i would have to hack something together with x-input, but then a savior appeared from the horizon: Chataigne, a french "orchestration" software used by installation and new media artists. This app had wiimote support, and let me export that data into a number of protocols, including OSC but more convenient for me, websockets. This means I have much more freedom in the software stack I want to use to make this work.
 
 ## the idea
+
+the big idea is that I want to design an experience that is
+
+1. collaboative
+2. about making art/design
+3. uses the wiimotes
+
+SO my big idea was to either:
+
+1. make a figma-like "design" tool that lets players drag around elements, but the elements will have a physics applied to them, letting them bounce around.
+2. a "suburban home" builder for 2 players, using 3d models to make glitched and fucked up building plans.
+
+I decided to go with idea #1, as it seemed easier to implement something in 2d. This also meant I could use a javascript stack for 2d, making it easier for me to put something together.
+
+This video inspired me to use the physics engine:
+
+import { Youtube } from "@astro-community/astro-embed-youtube";
+
+<YouTube id="https://www.youtube.com/watch?v=1zUJzzRu-xs">
