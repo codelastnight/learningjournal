@@ -7,3 +7,5 @@ so here it is.
 made in [astrojs](https://astro.build/) and [tailwind](https://tailwindcss.com/) with some funny vanilla javascript. (js not needed to load site)
 
 accessible and progressively enhancemented and such
+
+TODO: no-js support for loading videos (i currently use js to lazy load the videos)
