@@ -17,15 +17,36 @@ after talking with paul, he suggested using something like a game controller so 
 
 He also told me about OSC(open sound control) which was a protocol I had no idea about
 
-So, from this I decided to figure out connecting windows pcs and wiimotes (not an easy task)
-
-The first thing I did was try using wiiUPro, which did not work at all. I got the wiimote to connect, but it did not output any information that I could use.
-
-The next thing I tried was GlovePIE, which was promising. It had a scripting interface that let me export the native wiimote commands into something other programs could understand. However, it had a limited number of things it supported as an outout, lke X-input. OSC was broken in the latest version of GlovePIE.
-
-I thought i would have to hack something together with x-input, but then a savior appeared from the horizon: Chataigne, a french "orchestration" software used by installation and new media artists. This app had wiimote support, and let me export that data into a number of protocols, including OSC but more convenient for me, websockets. This means I have much more freedom in the software stack I want to use to make this work.
-
 ## the idea
+
+I believe there is meaning-making in the act of collaboration. to struggle to make design together. In the conversations and working together, people can deepen their connections with each other.
+
+### collaboration
+
+I think about the [Exhibition _It all starts with a thread_](https://mawithathread.mmm.page/) at the Whitechapel Gallery of london that I visited. One of the works features the artists[^threadartists] with various collaborative pieces.
+
+In particular, Raisa Kabir’s moving image piece, House Made of Tin stands out. In this piece, multiple people work together on a loom. As the documentation reveals, the struggle to collectively weave the piece together created a "physical support structure [...] completely woven, connects us all."[^houseoftin]
+
+![](./1uoul0y.jpeg)
+
+From the intentional struggle of weaving as a practice, creates understanding and connection with people.
+
+[^threadartists]: Bella HowardBreakfast, Lunch and Dinner CollectiveFikayo AdebajoGut FeelingJulia Dèng HànzúKatarzyna PerlakLu Williams (Grrrl Zine)Raisa KabirTilda Scarlett from MA Curating Art and Public Programmes. https://www.whitechapelgallery.org/exhibitions/it-all-starts-with-a-thread/
+[^houseoftin]: from Raisa Kabir's documentation of the piece. https://lids-sewn-shut.typepad.com/blog/2021/11/house-made-of-tin-a-socially-distanced-weaving-performance-2020-film-stills.html
+
+### imprecision
+
+Interesting and unexpected designs emerge from the glitchiness and imprecisions of the tools. Furthermore, this gives an air of silliness to the project.
+
+#### aside: its important to stay unserious and silly
+
+I know there is great irony in talking about silliness in design through a completely serious manner, but I feel like people are misunderstanding my position.
+
+Its important to present design as unserious wherever possible. From its inception design has been a tool of the state. Ruben Pater talks about how the graphic designer was used to break the power of the printmaking unions. The Star Designer is exclusive, a creative genius, a lone wolf alpha male.
+
+Drawing from [Design Justice Principles](https://designjustice.org/read-the-principles), I use sillyness to redefine the designer from an expert into a facilitator. This removes the air of importance that often causes people to be hesitant to participate in design. "Come and join! its not that serious" is the vibe I am going for.
+
+### so... the idea?
 
 the big idea is that I want to design an experience that is
 
@@ -33,15 +54,35 @@ the big idea is that I want to design an experience that is
 2. about making art/design
 3. uses the wiimotes
 
+The importance of the wiimotes is in their lack of precision, and their familiarity to users. PIcking up a wiimote needs less explanation.
+
 SO my big idea was to either:
 
 1. make a figma-like "design" tool that lets players drag around elements, but the elements will have a physics applied to them, letting them bounce around.
-2. a "suburban home" builder for 2 players, using 3d models to make glitched and fucked up building plans.
+2. a "suburban home" builder for 2 players, using 3d models to make glitched and fucked up building plans. (this would fit in with some of my other ideas floating in my head)
 
-I decided to go with idea #1, as it seemed easier to implement something in 2d. This also meant I could use a javascript stack for 2d, making it easier for me to put something together.
+I decided to go with idea #1, as it seemed easier to implement something in 2d. This also meant I could use a javascript stack for 2d, making it easier for me to put something together. I also thought perhaps I was overloading with the ideas on the second prompt.
 
-This video inspired me to use the physics engine:
+This video from artist Nikita Diakur inspired me to use the physics engine:
 
 import { YouTube } from "@astro-community/astro-embed-youtube";
 
 <YouTube id='https://www.youtube.com/watch?v=1zUJzzRu-xs' />
+
+I thought this would be interesting to implement, as there are really unexpected and uncontrollable effects that occur from the chaos of physics engines. I think this adds to the imprecision I am aiming for.
+
+## wiimotes and windows
+
+So, from this I decided to figure out connecting windows pcs and wiimotes
+
+The first thing I did was try using wiiUPro, which did not work at all. I got the wiimote to connect, but it did not output any information that I could use.
+
+The next thing I tried was GlovePIE, which was promising. It had a scripting interface that let me export the native wiimote commands into something other programs could understand. However, it had a limited number of things it supported as an outout, lke X-input. OSC was broken in the latest version of GlovePIE.
+
+I thought i would have to hack something together with x-input, but then a savior appeared from the horizon: Chataigne, a french "orchestration" software used by installation and new media artists. This app had wiimote support, and let me export that data into a number of protocols, including OSC but more convenient for me, websockets. This means I have much more freedom in the software stack I want to use to make this work.
+
+### uh oh (limitations)
+
+I realized too late (day before the showcase) that Chataigne, for whatever reason, wasn't able to detect motionPlus, despite other software being able to do so. I submitted a bug report, but I havent seen
+
+![](<./Screenshot 2023-12-08 061105.jpg>)
