@@ -42,6 +42,12 @@ To me, learning after effects, which is a new software to me, was a larger prior
 
 ## the cat video section
 
+I used this video to get the camera motion to track:
+
+import videotrack from "./20231031 013355.webm";
+
+<Video src={videotrack} />
+
 I downloaded some cat videos, keyed out the green, and placed them around the screen in after effects. for whatever reason after effects could not handle the amount of cats on screen (too many cats!)
 
 so this was all i could muster:
@@ -70,6 +76,8 @@ import video1 from "./1553-4821-2.webm";
 
 To get the "soft edge" look for the background images and videos, I created a bw picture going from white to black, and used that as an alpha mask on the shader. delightfully clunky.
 
+![](<./Screenshot 2023-11-02 010354.png>)
+
 ## creating the title card.
 
 I was looking at chinese tea graphics from the local chinese supermarket. these kitchy designs are often the inspiration for many great chinese designers (other asian countries have this too, but have a different aesthetic language).
@@ -95,15 +103,23 @@ like i know frutiger aero/metro is like suuuper in rn so its like, im following 
 
 I replicated the playstation screen from the inspiration video with a box and a wave filter. I used a gradient for the fill, achieving the desired look.
 
-image here
+I added a sunburst effect, animated to move left to right.
+
+import videologo from "./Logo.webm";
+
+<Video src={videologo} />
 
 I learned how to manually manipulate the keyfames to get the super curved interpolations.
 
-image here
+![](<./Screenshot 2023-12-11 024122.png>)
 
 To get the dogs to show up, I used a script from an online tutorial to stagger and copy the animation keyframes. I'm not sure if this is the fastest way to do this but I think it works alright.
 
-image here
+![](<./Screenshot 2023-12-11 023720.png>)
+
+import videodawgs from "./Dawgs.webm";
+
+<Video src={videodawgs} />
 
 ## embracing my american roots
 
@@ -173,3 +189,16 @@ this is the final video[^compression].
 <Video src={final} autoplay={false} />
 
 [^compression]: for future reference: I used handbrake to compress videos, using the webm container, codec vb8, at bitrate of 1000 w/ 2-passes. this compressed the videos down to a decent size ({'<10'} mb).
+
+### sources
+
+https://youtu.be/ejFkH2vD0J0?si=rkSqybn4E5hbZTu-
+https://youtu.be/at7ZHvxMxbM?si=tT-TaMWY1fj6TVfn
+https://youtu.be/XiFgAin8A8c?si=ycsiV8f8ya2VB5lH
+https://youtu.be/ph9nPf_pYbk?si=mB7eYd-yzaD9zsBC
+https://www.youtube.com/watch?v=Bd5muvEqk2Q
+https://www.youtube.com/watch?v=4lL4-vzEtzk
+https://www.youtube.com/watch?v=UmZ6VjI4gmg
+https://wallpaperaccess.com/windows-flower
+
+pictures of dogs are from some tiktok slideshow. i'll update as i find them.
