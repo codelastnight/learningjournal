@@ -21,6 +21,47 @@ Essentially, Sam talks about how the collection of data can be used for politica
 
 While I originally wanted to collect my own dataset and train my own machine learning system, I obviously didn't have time, nor the skillset to accomplish such a task. After consulting cat, she suggested I should narrow my scope and work with tools that I already had.
 
-I was really struggling with figuring out what I could do with the tools I had.
+One of the other parts of Sam Lavine's manifesto is about utilizing the same tools that companies use against themselves. essentially, flipping the coin on its head on the use of big data. This is a concept also present in the white color crime zone project. I realized I could do something like this too, and present a project that would put the tool against those in power.
 
-##
+One of the ideas we discussed was a face recognition model that would slowly deteriorate as a user clicked through, refering to the "one pixel attack" paper from 2015. However, this did not get very far.
+
+I was really struggling with figuring out what I could do with the tools I had. I browsed through ML5js and TensorflowJS, and I was interested at using the hand detection feature.
+
+I was also thinking about surveillance captialism, as that was the topic of my DHT paper.
+![](<./Screenshot 2023-12-11 160333.jpg>)
+I thought this was topical, so I decided I wanted to make something relating to surveillance in the workspace. Thinking of the "flipping" of employee surveillance, I thought to myself, what if we monitored the executives instead?
+
+One of the major problems with these systems that micro-manage employees, of course, is that they are made by people (in tech) that dont know or understand the day-to-day operations and mindset of a regular employee. This means that much of the time, the technology tries to micro-manage in a way that harms the employee.
+
+One such example is the starbucks automated system for assigning workers hours. Based on data from the sales at a store, the system decides the minimum amount of workers needed in that store. However, there is a flaw in this. When the internet goes down at a store (which it often does), the store can't take in mobile orders, meaning less orders are processed. In the eyes of the system, this store simply looks like less people are going there, and the system decides to assign less hours for the workers for the following week. This leads to overworked and understaffed locations who have to deal with angry customers.
+
+(I know this based on stories from my friends who worked at starbucks in 2023)
+
+So, in the same way, I wanted to comment on this disconnect between the "designers" of such AI systems and the actual worker being monitored. In my case, I have no idea what a CEO does on the day-to-day. I simply guessed that they just pose really well in front of the camera.
+
+## design
+
+![](<./Screenshot 2024-01-08 033355.jpg>)
+The idea behind the original design was to mimic a corporate 90s bad-powerpoint look, which I thought would emphasize the satirical aspect. I think this visual aesthetic has, in the public eye, clearly conveys the "evil company."
+![](<./Screenshot 2024-01-08 032416.jpg>)
+However, Cat was not convinced that this was the best way to present the idea. So I pivoted and tried a slick modern startup look.
+
+![](<./Screenshot 2024-01-08 031958.jpg>)
+
+I was heavily inspired by the branding of notion, which I think represents current silicon valley sensibilities very well. I picked the name "super-visor.ai", mimicking generic startup companies that use a common word attached to a tech concept, like '.ai'.
+
+![](<./Screenshot 2024-01-08 021251.jpg>)
+
+To achieve this end, I use the font Open Sauce Sans, an open-source font that mimics the sans-serif styles of branding such as Figma. It is clean, but a just quirky enough to feel different. (another startup staple).
+
+I also came up with some pretty funny copy.
+![](<./Screenshot 2024-01-08 033244.jpg>)
+![](<./Screenshot 2024-01-08 024238.jpg>)
+
+Thinking back to notion, I think the design plays an important role on presenting the ideology of silicon valley tech. The branding and design promises to make your like clean and organized though notion, portrayed with slick animations and quirky, handdrawn characters.
+
+However, when you actually use notion, you find that it is instead a very intensive, hard to use, and honestly kind of clunky software. In this project, I tried to portray the same disconnect between the marketing and the actual software.
+
+## demo
+
+Unfortunately, because I spent time figuring out the re-branding and implementing that into the project, I ended up not having time to actually get the demo itself to be better, such as a working graph that moves up and down. If I had more time I would finish implementing this.
