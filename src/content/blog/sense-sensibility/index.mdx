@@ -39,6 +39,81 @@ One such example is the starbucks automated system for assigning workers hours. 
 
 So, in the same way, I wanted to comment on this disconnect between the "designers" of such AI systems and the actual worker being monitored. In my case, I have no idea what a CEO does on the day-to-day. I simply guessed that they just pose really well in front of the camera.
 
+## coding
+
+Getting the code to work was more of an exersize in getting sveltekit to integrate with tfjs.
+
+Getting everything to run required things to be loaded in a specific order:
+
+```js
+async function loadHandDetection() {
+  // init detector
+  detector = await handPoseDetection.createDetector(model, detectorConfig);
+  // get webcam
+  if (navigator.mediaDevices.getUserMedia) {
+    const media = await navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .catch((e) => console.log("webcam load fail: ", e));
+    if (media) video.srcObject = media;
+    //start script when video loads
+    video.onloadedmetadata = (e) => {
+      console.log("video loaded");
+      video.play();
+      isWebcamLoaded = true;
+      run();
+    };
+  }
+}
+loadHandDetection();
+```
+
+![](./1846bc1c-f428-48de-ac20-e3790ec0658b.gif)
+I got the video to show up, with corrosponding hand motions in the p5 canvas.
+
+I was wondering how I would get the code to detect a specific form. I had some thoughts, like maybe a linear regression line on the parts that would be straight. I ended up going the simple route: I recorded myself doing the action as points of data, then I simply check if the current points are within a certain radius of my recorded, "ideal" points.
+![](./2a3c06d9-9f8e-40fc-8d68-90ba3e9e585b.gif)
+
+```js
+for (const hand of handData) {
+  p5.fill("#ff0000");
+  if (hand.handedness === "Right") p5.fill("#ff00ff");
+
+  hand.keypoints.forEach((point, index) => {
+    if (
+      point.name?.includes(
+        "ring_finger" || point.name?.includes("index_finger")
+      )
+    )
+      return;
+    const x = point.x * scale + handWindow.x;
+    const y = point.y * scale + handWindow.y;
+    if (
+      x < handWindow.x ||
+      x > handWindow.x + handWindow.width ||
+      y < handWindow.y ||
+      y > handWindow.y + handWindow.height
+    )
+      return;
+    const ideal = idealPosition.find(
+      (i) => i.handedness === hand.handedness
+    )?.keypoints;
+    if (ideal) {
+      const distance = p5.dist(
+        x,
+        y,
+        ideal[index].x * scale,
+        ideal[index].y * scale
+      );
+      if (distance < 30 * scale) {
+        p5.fill("#0000ff");
+        ceoNess += 1;
+      }
+    }
+    p5.rect(x, y, 14 * scale, 14 * scale);
+  });
+}
+```
+
 ## design
 
 ![](<./Screenshot 2024-01-08 033355.jpg>)
@@ -61,6 +136,7 @@ I also came up with some pretty funny copy.
 Thinking back to notion, I think the design plays an important role on presenting the ideology of silicon valley tech. The branding and design promises to make your like clean and organized though notion, portrayed with slick animations and quirky, handdrawn characters.
 
 However, when you actually use notion, you find that it is instead a very intensive, hard to use, and honestly kind of clunky software. In this project, I tried to portray the same disconnect between the marketing and the actual software.
+![](./c55e61eb-ee72-43c9-a82d-b83e098778ab.gif)
 
 ## demo
 
@@ -70,3 +146,7 @@ https://github.com/codelastnight/ceo-pip/
 you need node 18 and pnpm installed to run this project. pnpm can be installed as such `npm i -g pnpm`
 
 Unfortunately, because I spent time figuring out the re-branding and implementing that into the project, I ended up not having time to actually get the demo itself to be better, such as a working graph that moves up and down. If I had more time I would finish implementing this.
+
+```
+
+```
